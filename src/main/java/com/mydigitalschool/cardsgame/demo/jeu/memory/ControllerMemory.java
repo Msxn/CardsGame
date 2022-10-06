@@ -10,6 +10,8 @@ import com.mydigitalschool.cardsgame.demo.fenetre.console.ControllerConsole;
 import com.mydigitalschool.cardsgame.demo.fenetre.jfx.ControllerJFX;
 import com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing;
 
+import static com.mydigitalschool.cardsgame.demo.fenetre.jfx.VueJFX.timerJFX;
+
 
 /**
  * ControllerPPE class
@@ -122,15 +124,13 @@ public class ControllerMemory extends ModelMemory{
      */
     public static void comparaison() {
 
-        if(modeJeu !=3){
+        if(modeJeu != 3){
             t = new Timer(400, new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     hideAll();
                     stopTimer();
                 }
             });
-        }else{
-            hideAll();
         }
 
 
@@ -153,9 +153,10 @@ public class ControllerMemory extends ModelMemory{
 
             System.out.println("\nperdu\n");
             currentPlayer++;
-            if(modeJeu !=3) t.start();
-
-
+            if(modeJeu !=3)
+                t.start();
+            else
+                timerJFX.start();
         }
         resetCartes();
         checkFin();
@@ -167,6 +168,7 @@ public class ControllerMemory extends ModelMemory{
     public static void removeCard(int carte) {
         paquetDe32Cartes.remove(carte);
         if(modeJeu == 2) fenetreSwing.removeOnWindow(carte);
+        if(modeJeu == 3) fenetreJFX.deleteCard(carte);
     }
 
 

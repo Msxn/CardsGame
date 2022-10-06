@@ -2,6 +2,7 @@ package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
 import com.mydigitalschool.cardsgame.demo.cartes.paquet.Paquet32;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,10 @@ public class VueJFX extends Application{
     static String image = "file:C:\\Users\\Matthieu\\IdeaProjects\\demo\\src\\images\\";
     static ImageView imageView;
 
+    public static Timer timerJFX = null;
+
     @Override
     public void start(Stage stage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
 
         int increment = 0;
         GridPane cardPanel = new GridPane();
@@ -41,10 +45,10 @@ public class VueJFX extends Application{
                     button.setMinSize(71, 96);
                     button.setMaxSize(71, 96);
                     button.setOnAction(new EcouteSourisJFX(parseInt(button.getId())));
-/*
+
                     imageView = new ImageView(new Image(image+"Hidden.gif"));
                     button.setGraphic(imageView);
-*/
+
                     arrayButtons.add(button);
                     increment++;
 
@@ -59,6 +63,17 @@ public class VueJFX extends Application{
         stage.setScene(scene);
         stage.show();
 
+        ControllerJFX.hideAllCards();
+
+        timerJFX = new Timer(400, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Platform.runLater(() -> {
+                    ControllerJFX.hideAllCards();
+                    System.out.println("done");
+                    timerJFX.stop();
+                });
+            }
+        });
 
     }
 
@@ -78,5 +93,11 @@ public class VueJFX extends Application{
         System.out.println(image+ControllerJFX.findCard(carte));
         arrayButtons.get(carte).setGraphic(imageView);
     }
+
+    public static void supprimerCarte(int carte){
+        arrayButtons.get(carte).setDisable(true);
+    }
+
+
 
 }

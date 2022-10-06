@@ -27,7 +27,9 @@ public class ControllerJFX{
     public static Paquet32 currentPaquet;
 
     public ControllerJFX(Paquet32 paquet){
+
         this.currentPaquet = paquet;
+
     }
 
     public void initJFX() {
@@ -59,6 +61,14 @@ public class ControllerJFX{
 
     public void show(int carte){
         VueJFX.montrerCarte(carte);
+    }
+
+    public static void hideAllCards(){
+        ControllerMemory.hideAll();
+    }
+
+    public static void deleteCard(int carte){
+        VueJFX.supprimerCarte(carte);
     }
 
     public static String findCard(int carte){
