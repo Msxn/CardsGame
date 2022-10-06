@@ -1,6 +1,5 @@
 package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
-import com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

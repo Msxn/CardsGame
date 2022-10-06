@@ -47,22 +47,22 @@ public abstract class Paquet<T extends ICarte>{
 
 
     public String toString() {
-        String visuel = "";
+        StringBuilder visuel = new StringBuilder();
         int compteur = 1;
         for(T t : paquetCartes) {
             if(t != null) {
-                visuel += t.toString();
+                visuel.append(t.toString());
             } else {
-                visuel += "[---XX---]";
+                visuel.append("[---XX---]");
             }
 
 
             if(compteur % 6 == 0 && compteur != 0) {
-                visuel += "\n";
+                visuel.append("\n");
             }
             compteur++;
         }
-        return visuel;
+        return visuel.toString();
     }
 
 
