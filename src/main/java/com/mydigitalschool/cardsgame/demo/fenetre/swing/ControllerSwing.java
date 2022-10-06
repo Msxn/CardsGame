@@ -19,7 +19,7 @@ public class ControllerSwing {
     //TODO (facultatif regler bug souris)
 
     public static final String cheminIcones = "C:\\Users\\Matthieu\\eclipse-workspace\\speed\\src\\cartes\\images\\";
-    public static List<JLabel> arrayLabels = new ArrayList<JLabel>();
+    public static List<JLabel> arrayLabels = new ArrayList<>();
 
     public static JFrame fenetre = new JFrame();
     public static JPanel panneau = new JPanel();

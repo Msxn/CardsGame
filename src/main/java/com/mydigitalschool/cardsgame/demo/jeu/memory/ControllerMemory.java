@@ -17,7 +17,6 @@ import com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing;
  * Swing et console.
  *
  * @author Matthieu COLLETTE - MyDigitalSchool
- * @param <T>
  *
  */
 public class ControllerMemory extends ModelMemory{
@@ -68,7 +67,7 @@ public class ControllerMemory extends ModelMemory{
                 fenetreSwing.fenetreEnCours();
                 break;
 
-            case 3: fenetreJFX = new ControllerJFX();
+            case 3: fenetreJFX = new ControllerJFX(paquetDe32Cartes);
                 fenetreJFX.initJFX();
                 break;
 
@@ -77,6 +76,7 @@ public class ControllerMemory extends ModelMemory{
         }
 
         hideAll();
+
 
     }
 
@@ -122,12 +122,17 @@ public class ControllerMemory extends ModelMemory{
      */
     public static void comparaison() {
 
-        t = new Timer(400, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                hideAll();
-                stopTimer();
-            }
-        });
+        if(modeJeu !=3){
+            t = new Timer(400, new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    hideAll();
+                    stopTimer();
+                }
+            });
+        }else{
+            hideAll();
+        }
+
 
         String couleur1 = paquetDe32Cartes.get(carte1).couleur_toString();
         String couleur2 = paquetDe32Cartes.get(carte2).couleur_toString();
@@ -148,12 +153,14 @@ public class ControllerMemory extends ModelMemory{
 
             System.out.println("\nperdu\n");
             currentPlayer++;
-            t.start();
+            if(modeJeu !=3) t.start();
+
 
         }
         resetCartes();
         checkFin();
         currentPlayer = (joueurs.size() <= currentPlayer)? 0 : currentPlayer;
+
     }
 
 
@@ -166,12 +173,14 @@ public class ControllerMemory extends ModelMemory{
     public static void hideCard(int carte) {
         paquetDe32Cartes.get(carte).cacher();
         if(modeJeu == 2) fenetreSwing.cacherCarte(carte);
+        if(modeJeu == 3) fenetreJFX.hide(carte);
     }
 
 
     public static void showCard(int carte) {
         paquetDe32Cartes.get(carte).montrer();
         if(modeJeu == 2) fenetreSwing.montrerCarte(carte);
+        if(modeJeu == 3) fenetreJFX.show(carte);
     }
 
     public static void hideAll() {

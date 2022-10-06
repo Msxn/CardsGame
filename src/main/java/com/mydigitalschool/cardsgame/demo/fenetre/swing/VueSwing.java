@@ -45,7 +45,7 @@ public abstract class VueSwing extends ControllerSwing{
                     gc.gridheight = 1;
                     button = new JLabel();
                     button.setPreferredSize(new Dimension(15,15));
-                    button.addMouseListener(new EcouteSouris(increment));
+                    button.addMouseListener(new EcouteSourisSwing(increment));
                     arrayLabels.add(button);
                     System.out.println(increment);
                     panneau.add(arrayLabels.get(increment), gc);

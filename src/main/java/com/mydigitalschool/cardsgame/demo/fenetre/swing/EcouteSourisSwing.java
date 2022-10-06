@@ -4,13 +4,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class EcouteSouris extends MouseAdapter {
+public class EcouteSourisSwing extends MouseAdapter {
 
     //TODO javadoc
 
     private final int index;
 
-    public EcouteSouris(int i) {
+    public EcouteSourisSwing(int i) {
         this.index = i;
         System.out.println("bouton " + i + " créé");
     }
