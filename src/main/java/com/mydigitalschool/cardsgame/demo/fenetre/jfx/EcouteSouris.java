@@ -1,4 +1,4 @@
-package com.mydigitalschool.cardsgame.demo;
+package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

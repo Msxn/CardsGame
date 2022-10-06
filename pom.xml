@@ -71,7 +71,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.mydigitalschool.cardsgame.demo/com.mydigitalschool.cardsgame.demo.VueJFX
+                                com.mydigitalschool.cardsgame.demo/com.mydigitalschool.cardsgame.demo.com.mydigitalschool.cardsgame.demo.fenetre.jfx.VueJFX
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

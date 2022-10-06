@@ -1,0 +1,29 @@
+package com.mydigitalschool.cardsgame.demo.fenetre.swing;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+
+public class EcouteSouris extends MouseAdapter {
+
+    //TODO javadoc
+
+    private final int index;
+
+    public EcouteSouris(int i) {
+        this.index = i;
+        System.out.println("bouton " + i + " créé");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent arg0) {
+        System.out.println("click bouton " + getIndex());
+        ControllerSwing.onClick(getIndex());
+
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+}

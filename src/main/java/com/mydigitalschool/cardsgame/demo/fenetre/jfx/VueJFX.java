@@ -1,4 +1,4 @@
-package com.mydigitalschool.cardsgame.demo;
+package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -13,9 +13,14 @@ import static java.lang.Integer.parseInt;
 
 public class VueJFX extends Application {
 
+    public VueJFX(){
+        launchingJFX();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+
         int increment = 0;
         GridPane cardPanel = new GridPane();
         cardPanel.setAlignment(Pos.CENTER);
@@ -38,7 +43,7 @@ public class VueJFX extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void launchingJFX() {
         launch();
     }
 }
