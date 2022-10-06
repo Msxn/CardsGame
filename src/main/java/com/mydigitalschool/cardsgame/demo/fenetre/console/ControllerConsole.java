@@ -16,7 +16,7 @@ public class ControllerConsole{
     public void cardChoice() {
 
         int choixCarte;
-
+        //TODO null statement quand on choisit une carte désactivée
 
         while(ControllerMemory.fin != true) {
             System.out.println("Quelle première carte souhaitez-vous sélectionner? ");
