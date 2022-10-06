@@ -9,9 +9,12 @@ import com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing;
 import com.mydigitalschool.cardsgame.demo.jeu.Jeu;
 import com.mydigitalschool.cardsgame.demo.joueur.Joueur;
 
+/**
+ * ModelMemory : gestion des fonctionnalités primaires du jeu
+ * @author Matthieu Collette - MyDigitalSchool
+ */
 public class ModelMemory extends Jeu {
 
-    //TODO javadoc
 
     public static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     public static ControllerSwing fenetreSwing;
@@ -26,7 +29,7 @@ public class ModelMemory extends Jeu {
     public ModelMemory() {}
 
     public void Jouer() throws Exception {
-        initJeu(graph);
+        initJeu();
         displayJoueurs();
         jeuSwing();
     }
@@ -38,8 +41,7 @@ public class ModelMemory extends Jeu {
 
     }
 
-
-    public void initJeu(boolean graphique) throws Exception {
+    public void initJeu() throws Exception {
 
         int modeJeu = ControllerInitJoueurs.initTabJoueurs();
         new ControllerMemory(modeJeu);
@@ -47,10 +49,7 @@ public class ModelMemory extends Jeu {
 
     }
 
-
-
-
-    public void afficherScore() {
+    public static void afficherScore() {
         for(Joueur j : joueurs) {
             System.out.println("Score "+j.getPrenom()+" "+j.getNom()+" : "+j.getScore());
         }
@@ -68,9 +67,9 @@ public class ModelMemory extends Jeu {
         }
     }
 
-
-
-
-
+    public static void finDuJeu(){
+        afficherScore();
+        System.exit(0);
+    }
 
 }

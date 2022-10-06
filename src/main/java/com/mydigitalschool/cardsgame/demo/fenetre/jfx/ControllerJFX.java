@@ -2,29 +2,17 @@ package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
 import com.mydigitalschool.cardsgame.demo.cartes.paquet.Paquet32;
 import com.mydigitalschool.cardsgame.demo.jeu.memory.ControllerMemory;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing.getCurrentPaquet;
-
+/**
+ * Classe EcouteSouris, utilisée par chaque bouton lorqu'on clique dessus, récupère<br>
+ * l'index puis le passe dans la fonction onClick du Controleur concerné
+ * @author Matthieu COLLETTE - MyDigitalSchool
+ */
 public class ControllerJFX{
 
-    public static Path currentRelativePath = Paths.get("");
-
-    String image = "file:C:\\Users\\Matthieu\\IdeaProjects\\demo\\src\\images\\";
-    ImageView imageView;
 
     public static Paquet32 currentPaquet;
+
 
     public ControllerJFX(Paquet32 paquet){
 
@@ -55,6 +43,11 @@ public class ControllerJFX{
         return currentPaquet;
     }
 
+    public static void setCurrentPaquet(Paquet32 currentPaquet) {
+        ControllerJFX.currentPaquet = currentPaquet;
+    }
+
+
     public void hide(int carte){
         VueJFX.cacherCarte(carte);
     }
@@ -74,11 +67,6 @@ public class ControllerJFX{
     public static String findCard(int carte){
         return currentPaquet.get(carte).allClearToString();
     }
-
-    public void setCurrentPaquet(Paquet32 current) {
-        currentPaquet = current;
-    }
-
 
 
 }

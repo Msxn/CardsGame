@@ -3,9 +3,13 @@ package com.mydigitalschool.cardsgame.demo.cartes.classique;
 import com.mydigitalschool.cardsgame.demo.cartes.Carte;
 import com.mydigitalschool.cardsgame.demo.cartes.ICarteMemory;
 
-public abstract class CarteClassique extends Carte implements ICarteMemory {
 
-    //TODO javadoc
+/**
+ * Classe CarteClassique avec Interface ICarte : objet de type Carte qui est instancié à chaque création de carte.<br>
+ * C'est aussi elle qui nous permet d'interagir avec une carte via les interfaces ICarte/ICarteMemory
+ * @author Matthieu Collette - MyDigitalSchool
+ */
+public abstract class CarteClassique extends Carte implements ICarteMemory {
 
     private final Atout atout;
     private final Valeur valeur;
@@ -14,7 +18,6 @@ public abstract class CarteClassique extends Carte implements ICarteMemory {
 
     @Override
     public boolean estCompatible(ICarteMemory carte) {
-        // TODO Auto-generated method stub
         return false;
     }
 

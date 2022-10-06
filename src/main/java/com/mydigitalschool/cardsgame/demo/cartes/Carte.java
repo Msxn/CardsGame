@@ -1,14 +1,12 @@
 package com.mydigitalschool.cardsgame.demo.cartes;
 
-public abstract class Carte implements ICarte {
 
-    //TODO javadoc
+public abstract class Carte implements ICarte {
 
     private boolean visible = false;
 
     @Override
     public boolean isVisible() {
-        // TODO Auto-generated method stub
         return visible;
     }
 

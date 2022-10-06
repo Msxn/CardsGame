@@ -4,10 +4,12 @@ import com.mydigitalschool.cardsgame.demo.fenetre.swing.ControllerSwing;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-
+/**
+ * Classe EcouteSouris, utilisée par chaque bouton lorqu'on clique dessus, récupère<br>
+ * l'index puis le passe dans la fonction onClick du Controleur concerné
+ */
 public class EcouteSourisJFX implements EventHandler<ActionEvent> {
 
-    //TODO javadoc
 
     private final int index;
 

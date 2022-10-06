@@ -1,8 +1,10 @@
 package com.mydigitalschool.cardsgame.demo.cartes.classique;
 
+/**
+ * Enumérateur Atout, ce fichier nous permet de changer ou de rajouter les valeurs de cartes.<br>
+ * Si ajout/modif de cartes, ajouter son image correspondante au format 'atout''valeur'.png
+ */
 public enum Atout {
-
-    //TODO javadoc
 
     PIQUE("s", "No"), COEUR("h", "Ro"), CARREAU("d", "Ro"), TREFLE("c", "No");
 

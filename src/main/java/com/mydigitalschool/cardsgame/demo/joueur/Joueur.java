@@ -1,8 +1,11 @@
 package com.mydigitalschool.cardsgame.demo.joueur;
 
+/**
+ * Classe Joueur, créée et accessible dans un arrayList de Joueurs (min : 1 ; max : 4)
+ * @author Matthieu Collette - MyDigitalSchool
+ */
 public class Joueur {
 
-    //TODO javadoc
 
     private String nom;
     private String prenom;

@@ -23,9 +23,6 @@ import static com.mydigitalschool.cardsgame.demo.fenetre.jfx.VueJFX.timerJFX;
  */
 public class ControllerMemory extends ModelMemory{
 
-    //TODO javadoc
-    //TODO gestion de fin du jeu
-
 
     /**
      * Carte1 et carte2 deux variables Integer qui récupèrent l'index de la carte cliquée<br>
@@ -46,35 +43,36 @@ public class ControllerMemory extends ModelMemory{
     public static Timer t;
 
 
-
-
     /**
      * Constructeur ControllerPPE, détermine si le jeu doit être lancé en console, Swing ou JFX.<br>
      * En fonction du choix client, on ira chercher
      * @param mode Un entier reçu à l'instanciation du Controller qui détermine le mode de jeu
      */
-    public ControllerMemory(int mode) throws Exception{
+    public ControllerMemory(int mode){
 
         paquetDe32Cartes = new Paquet32();
         modeJeu = mode;
-        paquetDe32Cartes.melanger();
 
-        switch(modeJeu) {
+        //MELANGE DE CARTES !
+        //paquetDe32Cartes.melanger();
 
-            case 1: fenetreConsole = new ControllerConsole();
+        switch (modeJeu) {
+            case 1 -> {
+                fenetreConsole = new ControllerConsole();
                 fenetreConsole.cardChoice();
-                break;
-
-            case 2:	fenetreSwing = new ControllerSwing(paquetDe32Cartes);
+            }
+            case 2 -> {
+                fenetreSwing = new ControllerSwing(paquetDe32Cartes);
                 fenetreSwing.fenetreEnCours();
-                break;
-
-            case 3: fenetreJFX = new ControllerJFX(paquetDe32Cartes);
+            }
+            case 3 -> {
+                fenetreJFX = new ControllerJFX(paquetDe32Cartes);
                 fenetreJFX.initJFX();
-                break;
-
-            default: new Exception("aucun mode sélectionné");
+            }
+            default -> {
+                System.out.println("aucun mode sélectionné");
                 return;
+            }
         }
 
         hideAll();
@@ -141,8 +139,6 @@ public class ControllerMemory extends ModelMemory{
         String val2 = paquetDe32Cartes.get(carte2).valeur_toString();
 
 
-
-
         if(val1.equals(val2) && couleur1.equals(couleur2) && carte1 != carte2) {
 
             System.out.println("gagné "+couleur1+" "+couleur2);
@@ -154,9 +150,9 @@ public class ControllerMemory extends ModelMemory{
             System.out.println("\nperdu\n");
             currentPlayer++;
             if(modeJeu !=3)
-                t.start();
+                t.start(); //on lance ici le timer correspondant aux modes console et swing
             else
-                timerJFX.start();
+                timerJFX.start(); //et ici le timer de JavaFX (pour l'instant en static directement dans la vue)
         }
         resetCartes();
         checkFin();
@@ -164,14 +160,20 @@ public class ControllerMemory extends ModelMemory{
 
     }
 
-
+    /**
+     * removeCard, permet de supprimer la carte quel que soit le mode
+     * @param carte la carte à supprimer/désactiver
+     */
     public static void removeCard(int carte) {
         paquetDe32Cartes.remove(carte);
         if(modeJeu == 2) fenetreSwing.removeOnWindow(carte);
         if(modeJeu == 3) fenetreJFX.deleteCard(carte);
     }
 
-
+    /**
+     * removeCard, permet de cacher la carte quel que soit le mode
+     * @param carte la carte à supprimer/désactiver
+     */
     public static void hideCard(int carte) {
         paquetDe32Cartes.get(carte).cacher();
         if(modeJeu == 2) fenetreSwing.cacherCarte(carte);
@@ -179,12 +181,19 @@ public class ControllerMemory extends ModelMemory{
     }
 
 
+    /**
+     * removeCard, permet de cacher la carte quel que soit le mode
+     * @param carte la carte à supprimer/désactiver
+     */
     public static void showCard(int carte) {
         paquetDe32Cartes.get(carte).montrer();
         if(modeJeu == 2) fenetreSwing.montrerCarte(carte);
         if(modeJeu == 3) fenetreJFX.show(carte);
     }
 
+    /**
+     * hideAll, permet de cacher toutes les cartes d'un coup
+     */
     public static void hideAll() {
         for(int i=0; i<ControllerMemory.paquetDe32Cartes.size(); i++) {
             if(paquetDe32Cartes.get(i) != null) {
@@ -193,25 +202,29 @@ public class ControllerMemory extends ModelMemory{
         }
     }
 
-    public static void checkFin() {
-        fin = true;
-        for(int i = 0; i<paquetDe32Cartes.size(); i++){
-            if(paquetDe32Cartes.get(i) != null)
-                fin = false;
-        }
-
-
-    }
-
+    /**
+     * resetCartes, permet de remettre à null les variables qui récupèrent l'id du choix des cartes
+     */
     public static void resetCartes() {
         carte1 = null;
         carte2 = null;
     }
 
 
-
-
-
+    /**
+     * checkFin, permet de déterminer si les cartes sont toutes trouvées et d'appeler la fonction qui affichera le score de fin<br>
+     * et qui permera le jeu
+     */
+    public static void checkFin() {
+        fin = true;
+        for(int i = 0; i<paquetDe32Cartes.size(); i++){
+            if(paquetDe32Cartes.get(i) != null)
+                fin = false;
+        }
+        if(fin){
+            ModelMemory.finDuJeu();
+        }
+    }
 
 
 

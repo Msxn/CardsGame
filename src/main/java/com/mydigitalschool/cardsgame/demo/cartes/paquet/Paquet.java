@@ -6,9 +6,12 @@ import java.util.Collections;
 
 import com.mydigitalschool.cardsgame.demo.cartes.ICarte;
 
+/**
+ * Classe Paquet qui contient des objets de type Carte dans une List.<br>
+ * @author Matthieu Collette - MyDigitalSchool
+ */
 public abstract class Paquet<T extends ICarte>{
 
-    //TODO javadoc
 
     private ArrayList<T> paquetCartes = new ArrayList<T>();
 

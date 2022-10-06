@@ -11,10 +11,12 @@ import javax.swing.JLabel;
 
 import com.mydigitalschool.cardsgame.demo.cartes.paquet.Paquet32;
 
+/**
+ * VueSwing : c'est ici que la fenêtre est créée avec toutes les cartes affichées sur un tableau de 6x6
+ * @author Matthieu Collette - MyDigitalSchool
+ */
 public abstract class VueSwing extends ControllerSwing{
 
-    //TODO gestion de la fenetre
-    //TODO javadoc
 
     private static final int LARGEUR = 500;
     private static final int HAUTEUR = 700;

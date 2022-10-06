@@ -1,6 +1,5 @@
 package com.mydigitalschool.cardsgame.demo.fenetre.jfx;
 
-import com.mydigitalschool.cardsgame.demo.cartes.paquet.Paquet32;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -12,14 +11,15 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * VueJFX : c'est ici que la fenêtre est créée avec toutes les cartes affichées sur un tableau de 6x6
+ * @author Matthieu Collette - MyDigitalSchool
+ */
 public class VueJFX extends Application{
 
     public static List<Button> arrayButtons = new ArrayList<>();
@@ -29,7 +29,7 @@ public class VueJFX extends Application{
     public static Timer timerJFX = null;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage){
 
         int increment = 0;
         GridPane cardPanel = new GridPane();
@@ -65,15 +65,13 @@ public class VueJFX extends Application{
 
         ControllerJFX.hideAllCards();
 
-        timerJFX = new Timer(400, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Platform.runLater(() -> {
-                    ControllerJFX.hideAllCards();
-                    System.out.println("done");
-                    timerJFX.stop();
-                });
-            }
-        });
+        //timer de 400ms à chaque fausse paire de carte retournée
+        //doit être fait dans une classe de type Application
+        timerJFX = new Timer(400, e -> Platform.runLater(() -> {
+            ControllerJFX.hideAllCards();
+            System.out.println("done");
+            timerJFX.stop();
+        }));
 
     }
 

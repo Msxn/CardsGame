@@ -12,11 +12,8 @@ import javax.swing.JPanel;
 import com.mydigitalschool.cardsgame.demo.cartes.paquet.Paquet32;
 import com.mydigitalschool.cardsgame.demo.jeu.memory.ControllerMemory;
 
-public class ControllerSwing {
 
-    //TODO javadoc
-    //TODO affichage score et joueur
-    //TODO (facultatif regler bug souris)
+public class ControllerSwing {
 
     public static final String cheminIcones = "C:\\Users\\Matthieu\\eclipse-workspace\\speed\\src\\cartes\\images\\";
     public static List<JLabel> arrayLabels = new ArrayList<>();
@@ -28,7 +25,7 @@ public class ControllerSwing {
 
 
     public ControllerSwing(Paquet32 paquetEnCours) {
-        currentPaquet = paquetEnCours;
+        setCurrentPaquet(paquetEnCours);
     }
 
 
@@ -64,22 +61,6 @@ public class ControllerSwing {
             System.out.println(imageChemin);
             arrayLabels.get(i).setIcon(new ImageIcon(imageChemin));
         }
-        panneau.repaint();
-
-    }
-
-
-    public void retournerCarte(int carte) {
-        String imageChemin;
-        Paquet32 cartes = getCurrentPaquet();
-        System.out.println(cartes.get(carte).isVisible());
-        if(!cartes.get(carte).isVisible()) {
-            imageChemin = cheminIcones+"Hidden.gif";
-        }else {
-            imageChemin = cheminIcones+cartes.get(carte).allClearToString() + ".gif";
-        }
-        arrayLabels.get(carte).setIcon(new ImageIcon(imageChemin));
-        System.out.println(imageChemin);
         panneau.repaint();
 
     }
