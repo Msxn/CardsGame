@@ -31,7 +31,7 @@ public class ControllerInitJoueurs {
 
         }
 
-        System.out.println("Quel mode souhaitez vous? (1=>Console ; 2=>Swing ; 3=>IHM) : ");
+        System.out.println("Quel mode souhaitez vous? (1=>Console ; 2=>Swing ; 3=>JavaFX) : ");
         while(mode<1 || mode>3) mode = ModelMemory.scanf.nextInt();
 
 

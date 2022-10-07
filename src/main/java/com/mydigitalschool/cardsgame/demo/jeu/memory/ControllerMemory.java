@@ -84,7 +84,7 @@ public class ControllerMemory extends ModelMemory{
 
     /**
      * choixCarte1 et choixCarte2 deux méthodes qui sont choisies en fonction du premier<br>
-     * ou deuxième clic par
+     * ou deuxième clic par le controlleur IHM concerné
      */
     public static void choixCarte1() {
 

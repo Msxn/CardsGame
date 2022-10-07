@@ -16,13 +16,12 @@ import com.mydigitalschool.cardsgame.demo.joueur.Joueur;
 public class ModelMemory extends Jeu {
 
 
-    public static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+    public static ArrayList<Joueur> joueurs = new ArrayList<>();
     public static ControllerSwing fenetreSwing;
     public static ControllerConsole fenetreConsole;
     public static ControllerJFX fenetreJFX;
     public static int currentPlayer;
     public static Scanner scanf = new Scanner(System.in);
-    public static boolean graph = true;
     public static boolean fin = false;
 
 
@@ -41,7 +40,7 @@ public class ModelMemory extends Jeu {
 
     }
 
-    public void initJeu() throws Exception {
+    public void initJeu(){
 
         int modeJeu = ControllerInitJoueurs.initTabJoueurs();
         new ControllerMemory(modeJeu);
